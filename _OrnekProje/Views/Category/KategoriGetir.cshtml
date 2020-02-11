@@ -1,0 +1,20 @@
+﻿@model _OrnekProje.Models.Category
+@{
+    ViewBag.Title = "KategoriGetir";
+}
+
+<h2>KategoriGetir</h2>
+
+@using (Html.BeginForm("Update","Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.CategoryId)
+        @Html.TextBoxFor(m=>m.CategoryId,new { @class="form-control" }) 
+        <br />
+        @Html.LabelFor(m=>m.Name)
+        @Html.TextBoxFor(m=>m.Name,new { @class="form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Kategori Güncelle</button>
+    </div>
+}

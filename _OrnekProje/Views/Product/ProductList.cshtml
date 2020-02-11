@@ -1,0 +1,56 @@
+﻿@model  IEnumerable<_OrnekProje.Models.Product>
+
+@{
+    ViewBag.Title = "ProductList";
+}
+
+@using (Html.BeginForm("ProductList", "Product", FormMethod.Post))
+{
+    <h2>
+        Ürün Listesi
+    </h2>
+    <table class="table table-bordered ">
+        <tr>
+            <th>Ürün Id</th>
+            <th>Ürün Adı:</th>
+            <th>Ürün KısaAçıklaması</th>
+            <th>Ürün Açıklaması</th>
+            <th>Category</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <th>
+                    @item.ProductId
+                </th>
+                <th>
+                    @item.Name
+                </th>
+                <th>
+                    @item.ShortDescription
+                </th>
+
+                <th>
+                    @item.Description
+                </th>
+
+                <th>
+                    @item.CategoryId
+                </th>
+                <th>
+                    @Html.ActionLink("Sil", "Delete", "Product", new { id = item.ProductId },new { @class = "btn btn-danger form-control" })
+                </th>
+                <th>
+                    @Html.ActionLink( "Güncelle","GetProducts", "Product", new { id = item.ProductId }, new { @class = "btn btn-success form-control"})
+                </th>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+    <a href="/Product/AddProduct" class="btn btn-primary">ÜRÜN EKLE </a>
+}

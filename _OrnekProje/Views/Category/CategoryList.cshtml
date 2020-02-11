@@ -1,0 +1,42 @@
+﻿@model IEnumerable<_OrnekProje.Models.Category>
+@{
+    ViewBag.Title = "CategoryList";
+}
+
+@using (Html.BeginForm("CategoryList", "Category", FormMethod.Post))
+{
+    <h2>
+        Kategori Listesi
+    </h2>
+    <table class="table table-bordered ">
+        <tr>
+            <th>Kategori Id</th>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @item.CategoryId
+                    </th>
+                    <th>
+                        @item.Name
+                    </th>
+                    <th>
+                        @Html.ActionLink("Sil", "Delete", "Category", new { id = item.CategoryId },new { @class = "btn btn-danger form-control" })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Guncelle", "KategoriGetir", "Category", new { id = item.CategoryId },new { @class = "btn btn-success form-control" })
+                 
+                    <th/>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <a href="/Category/AddCategory" class="btn btn-primary">KATEGORİ EKLE </a>
+}

@@ -1,0 +1,32 @@
+﻿@model _OrnekProje.Models.Product
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h2>AddProduct</h2>
+
+<form class="form-group" method="post">
+    <div>
+        <label>
+            Ürün Adı
+        </label>
+        <input type="text" class="form-control" name="Name" />
+        <label>
+            Ürün KısaAçıklaması
+        </label>
+        <input type="text" class="form-control" name="ShortDescription" />
+        <label>
+            Ürün Açıklaması
+        </label>
+        <input type="text" class="form-control" name="Description" />
+        <label>
+            Kategori Seçiniz:
+        </label>
+        @*<input type="text" class="form-control" name="CategoryId" />*@
+        @Html.DropDownListFor(m=>m.Category.CategoryId,(List<SelectListItem>)ViewBag.dgr,new {@class="form-control"})
+        <div style="margin-top:20px">
+            <button class="btn btn-info">Ürün Ekle</button>
+        </div>
+    </div>
+</form>
+
